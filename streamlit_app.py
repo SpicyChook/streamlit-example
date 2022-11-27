@@ -1,13 +1,9 @@
 import streamlit as st
-import altair as alt
-import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
 
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
+arr = np.random.normal(1, 1, size=100)
+fig, ax = plt.subplots()
+ax.hist(arr, bins=20)
 
-c = alt.Chart(chart_data).mark_circle().encode(
-    x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
-
-st.altair_chart(c, use_container_width=True)
+st.pyplot(fig)
